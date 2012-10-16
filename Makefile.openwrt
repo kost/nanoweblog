@@ -1,0 +1,8 @@
+SYSROOT=$(OPENWRT)
+# PLATFORMOPT=--sysroot=$(SYSROOT)
+PLATFORMOPT=
+CC=$(OPENWRT)/usr/bin/mips-openwrt-linux-uclibc-gcc
+
+CFLAGS=$(PLATFORMOPT) -Wall -DHAVE_PWD_H -DHAVE_OPENLOG
+nanoweblog: nanoweblog.c
+	$(CC) $(CFLAGS) nanoweblog.c -o nanoweblog

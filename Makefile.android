@@ -1,0 +1,8 @@
+SYSROOT=$(NDK)/platforms/android-5/arch-arm
+PLATFORMOPT=--sysroot=$(SYSROOT)
+#CC=$(NDK)/toolchains/arm-linux-androideabi-4.4.3/prebuilt/linux-x86/bin/arm-linux-androideabi-gcc
+CC=$(NDK)/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86/bin/arm-linux-androideabi-gcc
+
+CFLAGS=$(PLATFORMOPT) -Wall -DHAVE_PWD_H -DHAVE_OPENLOG
+nanoweblog: nanoweblog.c
+	$(CC) $(CFLAGS) nanoweblog.c -o nanoweblog

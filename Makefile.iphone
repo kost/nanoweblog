@@ -1,0 +1,27 @@
+TOOLCHAIN_DIR=/Developer/Platforms/iPhoneOS.platform/Developer
+# SYSROOT = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.2.sdk
+SYSROOT = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk 
+
+BIN=$(TOOLCHAIN_DIR)/usr/bin
+GCC_BIN = $(BIN)/gcc
+STRIP_BIN = $(BIN)/strip
+
+DEBUG = 
+# DEBUG = -g
+# COPTS = -DHAVE_PWD_H -DHAVE_OPENLOG
+# no need to have syslog on iphone, store log to file
+COPTS = -DHAVE_PWD_H 
+
+ARCH_FLAGS=-arch armv6
+LDFLAGS =
+
+GCC_ARM = $(GCC_BIN) -Os -Wimplicit -isysroot $(SYSROOT) $(ARCH_FLAGS)
+
+default: nanoweblog.o
+	$(GCC_ARM) $(LDFLAGS) nanoweblog.o $(COPTS) $(DEBUG) -o nanoweblog
+
+nanoweblog.o: nanoweblog.c
+	$(GCC_ARM) -c nanoweblog.c $(COPTS) $(DEBUG) 
+	
+strip: nanoweblog
+	$(STRIP_BIN) nanoweblog

@@ -1,0 +1,31 @@
+Basic HTTP/Web honeypot for embedded systems (openwrt, mobiles, ...)
+Copyright (C) Kost. Distributed under GPL. 
+
+This is really basic http/web honeypot which answers randomly to 
+different web requests. It logs all packets to custom log file or 
+syslog.
+
+Since it is very small it is good honeypot for embedded systems:
+OpenWRT, Android, iPhone, etc.
+
+It is advised to edit the requests & responses which will suit 
+your need.
+
+Some parts were reused from nweb. 
+
+Generic
+=======
+just run "make"
+
+iPhone
+======
+make -f Makefile.iphone
+
+Android
+=======
+make -f Makefile.android NDK=/opt/android-ndk-r8b
+
+OpenWRT
+=======
+make -f Makefile.openwrt OPENWRT=/opt/toolchain-mips_r2_gcc-4.3.3+cs_uClibc-0.9.30.2
+
