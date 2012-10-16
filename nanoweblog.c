@@ -181,11 +181,11 @@ void web(int fd, char *ip)
 		responded=httpstdresponse (fd, buffer, 200, "OK", "text/html", "<HTML>OK</HTML>");
 	}
 
-	if( !strncmp(&buffer[0],"GET /favicon.ico ",17) || !strncmp(&buffer[0],"HEAD /favicon.ico ",18) ) {
+	if( !strncmp(&buffer[0],"GET /FAVICON.ICO ",17) || !strncmp(&buffer[0],"HEAD /FAVICON.ICO ",18) ) {
 		responded=httpstdresponse (fd, buffer, 404, "NOT FOUND", "text/html", "<HTML>NOT FOUND</HTML>");
 	} 
 
-	if( !strncmp(&buffer[0],"GET /robots.txt ",16) || !strncmp(&buffer[0],"HEAD /robots.txt ",17) ) {
+	if( !strncmp(&buffer[0],"GET /ROBOTS.TXT ",16) || !strncmp(&buffer[0],"HEAD /ROBOTS.TXT ",17) ) {
 		responded=httpstdresponse (fd, buffer, 200, "OK", "text/plain", "User-agent: *\nDisallow: /");
 	}
 
